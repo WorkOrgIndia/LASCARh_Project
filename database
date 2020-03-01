@@ -1,0 +1,106 @@
+user master
+go
+
+
+create database LASCARhDB
+go
+
+
+use LASCARhDB
+go
+
+DROP TABLE IF EXISTS LikeType;
+CREATE TABLE LikeType
+(LkId int NOT NULL,
+name varchar(100) NULL,
+icon varchar(200) NULL);
+
+----------
+
+DROP TABLE IF EXISTS GroupPostLikes;
+CREATE TABLE GroupPostLikes
+(Id int NOT NULL PRIMARY KEY,
+UserId int NOT NULL,
+GroupId int NOT NULL,
+PostId int NOT NULL,
+LikeTypeId int NOT NULL);
+
+----------
+
+DROP TABLE IF EXISTS PagePostLikes;
+CREATE TABLE PagePostLikes
+(Id int NOT NULL PRIMARY KEY,
+UserId int NOT NULL,
+PageId int NOT NULL,
+PostId int NOT NULL,
+LikeTypeId int NOT NULL);
+
+------------
+
+DROP TABLE IF EXISTS UserLikes;
+CREATE TABLE UserLikes
+(Id int NOT NULL PRIMARY KEY,
+UserId int NOT NULL,
+PostownerId int NOT NULL,
+likeTypeId int NOT NULL);
+
+
+---------------
+DROP TABLE IF EXISTS UserData;
+CREATE TABLE UserData
+(UserId int NOT NULL PRIMARY KEY,
+UserName varchar(100) NOT NULL,
+EmailId varchar(100) NOT NULL,
+phone varchar(15) NOT NULL,
+FullName varchar(100) NULL,
+Password varchar(50) NOT NULL,
+CreationDate datetime NOT NULL,
+ModifyDate datetime NOT NULL,
+Status bit NOT NULL);
+
+--------------
+
+DROP TABLE IF EXISTS Post;
+CREATE TABLE Post
+(PID int NOT NULL PRIMARY KEY,
+Post varchar(500) NULL,
+CreatedBy int NOT NULL,
+CreationDate datetime NOT NULL,
+ModifyBy int NULL,
+ModificationDate datetime NULL,
+Status bit NOT NULL);
+
+-------------------
+
+DROP TABLE IF EXISTS Group;
+CREATE TABLE Group
+(GId int NOT NULL PRIMARY KEY,
+CreatorId int NOT NULL,
+CreationDate datetime NOT NULL,
+ModificationDate datetime NOT NULL,
+GroupName varchar(100) NOT NULL);
+
+---------------
+
+DROP TABLE IF EXISTS Notification;
+CREATE TABLE Notification
+(NId int NOT NULL PRIMARY KEY,
+NotificationMessage varchar(500) NOT NULL,
+CreatedBy int NOT NULL,
+ModifiedBy int NOT NULL,
+CreationDate datetime NOT NULL,
+ModificationDate datetime NOT NULL);
+
+
+-------------------
+
+
+DROP TABLE IF EXISTS Comment;
+CREATE TABLE Comment
+(Cid int NOT NULL PRIMARY KEY,
+Comment nvarchar(500) NOT NULL,
+CreatedBy int NOT NULL,
+CreationDate datetime NOT NULL,
+ModifyBy int NOT NULL,
+ModificationDate datetime NOT NULL,
+Status bit NOT NULL);
